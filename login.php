@@ -24,7 +24,7 @@
         $_SESSION['user'] = $user;
         $_SESSION['pass'] = $pass;
         if($type != '2') {
-            header("location:userview.php");
+            header("location:userView.php");
         }
         else {
             header("location:businessView.php");

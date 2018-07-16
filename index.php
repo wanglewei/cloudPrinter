@@ -19,13 +19,13 @@
 
         <div style="text-align: center">
             <p>登录</p>
-            <form action="Login.php" method="get">
+            <form action="login.php" method="get">
             <p>username:  <input type="text" name="username"></p>
             <p>password:  <input type="password" name="password"></p>
             <input type="submit">
             </form>
             <p>注册</p>
-            <form action="zhuce.php" method="get">
+            <form action="registered.php" method="get">
                 <p>username: <input type="text" name="username"></p>
                 <p>password: <input type="password" name="password"></p>
                 <p>   <input type="radio" name="type" value="1" />用户
