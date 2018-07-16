@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="d665e0b9-8eeb-4bab-8c3f-582bc1016ad9" name="Cloud printer" url="http://localhost">
+        <fileTransfer port="0" mountedRoot="C:\phpStudy\PHPTutorial\WWW\untitled" accessType="MOUNT" />
+      </webServer>
+    </option>
+  </component>
+</project>
