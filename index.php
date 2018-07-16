@@ -20,8 +20,8 @@
         <div style="text-align: center">
             <p>登录</p>
             <form action="login.php" method="get">
-            <p>username:  <input type="text" name="username"></p>
-            <p>password:  <input type="password" name="password"></p>
+            <p>username: ?<input type="text" name="username"></p>
+            <p>password: ?<input type="password" name="password"></p>
             <input type="submit">
             </form>
             <p>注册</p>
