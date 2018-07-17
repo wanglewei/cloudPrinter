@@ -118,7 +118,7 @@ function unescape($str) {
                             
                             $a = iconv("UTF-8","ASCII",$a);
                             $b = iconv("UTF-8","ASCII",$b);
-                            $order = $a + $province + $b;
+                            //$order = $a + $province + $b;
                             //echo "alert(\"$a$province$b\");";
                             $result = mysql_query("$a$province$b");
 
