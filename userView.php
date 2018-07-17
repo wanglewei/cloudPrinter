@@ -66,7 +66,7 @@ function unescape($str)
         <form action="uploadFile.php" method="post" enctype="multipart/form-data">
                 <label for="file">文件名：</label>
                 <input type="file" name="file" id="file"><br \>
-                <input type="text" name="username"  readonly="true"  value="<?php session_start(); echo $_SESSION['user'];?>">
+                <input type="text" name="username"  readonly="true"  value="<?php session_start(); echo $_SESSION['user'];session_destroy();?>">
                 <input type="text" name="printname" id="printname">
                 <input type="submit" name="submit" value="提交">
         </form>
