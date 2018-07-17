@@ -4,28 +4,28 @@
 error_reporting(E_ALL^E_NOTICE);
 
 
-function unescape($str)
-{
-    $ret = '';
-    $len = strlen($str);
-    for ($i = 0; $i < $len; $i++) {
-        if ($str [$i] == '%' && $str [$i + 1] == 'u') {
-            $val = hexdec(substr($str, $i + 2, 4));
-            if ($val < 0x7f)
-                $ret .= chr($val);
-            else if ($val < 0x800)
-                $ret .= chr(0xc0 | ($val >> 6)) . chr(0x80 | ($val & 0x3f));
-            else
-                $ret .= chr(0xe0 | ($val >> 12)) . chr(0x80 | (($val >> 6) & 0x3f)) . chr(0x80 | ($val & 0x3f));
-            $i += 5;
-        } else if ($str [$i] == '%') {
-            $ret .= urldecode(substr($str, $i, 3));
-            $i += 2;
-        } else
-            $ret .= $str [$i];
-    }
-    return $ret;
+function unescape($str) {
+	$ret = '';
+	$len = strlen ( $str );
+	for($i = 0; $i < $len; $i ++) {
+		if ($str [$i] == '%' && $str [$i + 1] == 'u') {
+			$val = hexdec ( substr ( $str, $i + 2, 4 ) );
+			if ($val < 0x7f)
+				$ret .= chr ( $val );
+			else if ($val < 0x800)
+				$ret .= chr ( 0xc0 | ($val >> 6) ) . chr ( 0x80 | ($val & 0x3f) );
+			else
+				$ret .= chr ( 0xe0 | ($val >> 12) ) . chr ( 0x80 | (($val >> 6) & 0x3f) ) . chr ( 0x80 | ($val & 0x3f) );
+			$i += 5;
+		} else if ($str [$i] == '%') {
+			$ret .= urldecode ( substr ( $str, $i, 3 ) );
+			$i += 2;
+		} else
+			$ret .= $str [$i];
+	}
+	return $ret;
 }
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -41,16 +41,13 @@ function unescape($str)
         <script type="text/javascript" src="http://api.map.baidu.com/library/TextIconOverlay/1.2/src/TextIconOverlay_min.js" charset="UTF-8"></script>
         <script type="text/javascript" src="http://api.map.baidu.com/library/MarkerClusterer/1.2/src/MarkerClusterer_min.js" charset="UTF-8"></script>
         <script type="text/javascript">
-            function str2utf8(str) {
-                encoder = new TextEncoder('utf8');
-                return encoder.encode(str);
-            }
+
                 function $_cookie(name,value) {
                     var date = new Date();
 
                     $livetime = 5 * 24 * 3600 * 1000;// cookie生命周期
                     date.setTime(date.getTime() + $livetime);
-                    document.cookie = name + "=" + value + ";expires=" + date.toGMTString();
+                    document.cookie = name + "=" + escape(value) + ";expires=" + date.toGMTString();
                 }
             function createTag(marker,m){
 
@@ -66,7 +63,7 @@ function unescape($str)
         <form action="uploadFile.php" method="post" enctype="multipart/form-data">
                 <label for="file">文件名：</label>
                 <input type="file" name="file" id="file"><br \>
-                <input type="text" name="username"  readonly="true"  value="<?php session_start(); echo $_SESSION['user'];session_destroy();?>">
+                <input type="text" name="username"  readonly="true"  value="<?php session_start(); echo $_SESSION['user'];?>">
                 <input type="text" name="printname" id="printname">
                 <input type="submit" name="submit" value="提交">
         </form>
@@ -108,16 +105,23 @@ function unescape($str)
                             $_cookie("province",addComp.province);
                             <?php
                             if(isset($_COOKIE["province"])) {
+                                session_destroy();
                                 $province = $_COOKIE["province"];
                             }
                             else {
                                 echo "location.href='userView.php';";
                             }
                             $province = unescape($province);
-                            $order = "SELECT * FROM users WHERE province = \"$province\" and type = \"2\"";
+                            $a = "SELECT * FROM users WHERE province = \"";
+                            $b = "\" and type = \"2\"";
+                            
+                            
+                            $a = iconv("UTF-8","ASCII",$a);
+                            $b = iconv("UTF-8","ASCII",$b);
+                            $order = $a + $province + $b;
+                            //echo "alert(\"$a$province$b\");";
+                            $result = mysql_query("$a$province$b");
 
-                            //echo "alert('$order');";
-                            $result = mysql_query($order);
                             while($row = mysql_fetch_array($result)) {
                                 $lo = $row['lo'];
                                 $la = $row['la'];
