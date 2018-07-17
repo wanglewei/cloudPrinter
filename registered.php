@@ -14,11 +14,17 @@ if(isset($_GET["username"])) {
     $user = $_GET["username"];
     $pass = $_GET["password"];
     $type = $_GET["type"];
+    $province = $_GET["province"];
+    $Area = $_GET["Area"];
+    $City = $_GET["City"];
+    $lo = $_GET["lo"];
+    $la = $_GET["la"];
+    $Other = $_GET["Other"];
     $result = mysql_query("SELECT * FROM users WHERE username= \"$user\"");
     $row = mysql_fetch_array($result);
     if($row == null)
     {
-        mysql_query("INSERT INTO users (username, password,type) VALUES (\"$user\", \"$pass\",\"$type\")");
+        mysql_query("INSERT INTO users (username, password,type,la,lo,province,City,Area,Other) VALUES (\"$user\", \"$pass\",\"$type\",\"$la\",\"$lo\",\"$province\",\"$City\",\"$Area\",\"$Other\")");
         mysql_close($con);
         echo "success";
     }

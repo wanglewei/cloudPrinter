@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <head>
@@ -12,6 +13,15 @@
             background-color:cadetblue;
         }
     </style>
+
+    <style type="text/css">
+        html{height:100%}
+        body{height:100%;margin:0px;padding:0px}
+        #container{
+            height:50%;
+        }
+    </style>
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=3.0&ak=04uLKfHLu2zT9eKoaSk2WsXC0ekF3aF3" charset="UTF-8"></script>
 </head>
 
 <h1 id="top">云打印网站</h1>
@@ -25,9 +35,66 @@
         <p>   <input type="radio" name="type" value="1" />用户
             <input type="radio" name="type" value="2" />商家
         </p>
+        <input type="text" name="province"  readonly="true" id="province" />
+        <input type="text" name="City"  readonly="true" id="City"/>
+        <input type="text" name="Area"  readonly="true" id="Area"/>
+        <input type="text" name="lo"  readonly="true" id="lo"/>
+        <input type="text" name="la"  readonly="true" id="la"/>
+        <p>详细地址: <input type="text" name="Other" /></p>
+
         <input type="submit">
     </form>
+    <p>选择您（商家/用户）的的位置</p>
 </div>
+<div id="container"></div>
+    <script type="text/javascript">
+        var map = new BMap.Map("container");
+        var point = new BMap.Point(116.404, 39.915);
+        var x,y;
+        map.centerAndZoom(point, 10);
+        map.addControl(new BMap.GeolocationControl());
+        map.addControl(new BMap.NavigationControl());
+        map.addControl(new BMap.MapTypeControl());
+        var geolocation = new BMap.Geolocation();
+        geolocation.getCurrentPosition(function(r){
+            if(this.getStatus() == BMAP_STATUS_SUCCESS){
+                var mk = new BMap.Marker(r.point);
+                var center;
+                //map.addOverlay(mk);
+                map.panTo(r.point);
+            }
+            else {
+                alert('无法获取位置信息 错误码:'+this.getStatus());
+            }
+        });
+        map.addEventListener("click", function(e){   //点击事件
+            //alert(e.point.lng + ", " + e.point.lat);
+            //if(!e.overlay){
+            //  alert("aaaaaaaa");
+            //}
+            var myGeo = new BMap.Geocoder();
+            center = map.getCenter()
+            myGeo.getLocation(new BMap.Point(center.lng ,center.lat ), function(result){
+                if (result){
+                    var addComp = result.addressComponents;
+                    var pt = null;
+                    var i = 0;
+                    var mark;
+                    document.getElementById("province").value=addComp.province;
+                    document.getElementById("City").value=addComp.city;
+                    document.getElementById("Area").value=addComp.district;
+                    document.getElementById("la").value=e.point.lat;
+                    document.getElementById("lo").value=e.point.lng;
+                    map.clearOverlays();
+                    pt = new BMap.Point(e.point.lng,e.point.lat);
+                    mark=new BMap.Marker(pt);
+                    map.addOverlay(mark);
+                }
+            });
+        })
+
+    </script>
+
 
 </body>
 </html>

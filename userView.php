@@ -135,12 +135,7 @@ function unescape($str)
                     alert('无法获取位置信息 错误码:'+this.getStatus());
                 }
             });
-            map.addEventListener("click", function(e){   //点击事件
-                //alert(e.point.lng + ", " + e.point.lat);
-                //if(!e.overlay){
-                  //  alert("aaaaaaaa");
-                //}
-            })
+
         </script>
     </body>
 </html>
