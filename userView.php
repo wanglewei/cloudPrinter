@@ -114,7 +114,7 @@ function unescape($str)
                                 echo "location.href='userView.php';";
                             }
                             $province = unescape($province);
-                            $order = "SELECT * FROM users WHERE province = \"$province\"";
+                            $order = "SELECT * FROM users WHERE province = \"$province\" and type = \"2\"";
 
                             //echo "alert('$order');";
                             $result = mysql_query($order);
