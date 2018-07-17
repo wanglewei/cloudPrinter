@@ -15,24 +15,12 @@
     </head>
 
         <h1 id="top">云打印网站</h1>
-        <hr \>
+        <hr />
 
         <div style="text-align: center">
-            <p>登录</p>
-            <form action="login.php" method="get">
-            <p>username: ?<input type="text" name="username"></p>
-            <p>password: ?<input type="password" name="password"></p>
-            <input type="submit">
-            </form>
-            <p>注册</p>
-            <form action="registered.php" method="get">
-                <p>username: <input type="text" name="username"></p>
-                <p>password: <input type="password" name="password"></p>
-                <p>   <input type="radio" name="type" value="1" />用户
-                    <input type="radio" name="type" value="2" />商家
-                </p>
-                <input type="submit">
-            </form>
+            <p>欢迎界面</p>
+            <a href="loginView.php">登陆</a>
+            <a href="registeredView.php">注册</a>
         </div>
 
     </body>
