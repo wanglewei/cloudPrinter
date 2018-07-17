@@ -84,11 +84,11 @@ function unescape($str)
             var map = new BMap.Map("container");
             var point = new BMap.Point(116.404, 39.915);
             var x,y;
-            map.centerAndZoom(point, 15);
+            map.centerAndZoom(point, 10);
             map.addControl(new BMap.GeolocationControl());
             map.addControl(new BMap.NavigationControl());
             map.addControl(new BMap.MapTypeControl());
-            
+
             var geolocation = new BMap.Geolocation();
 
             geolocation.getCurrentPosition(function(r){
@@ -116,7 +116,7 @@ function unescape($str)
                             $province = unescape($province);
                             $order = "SELECT * FROM users WHERE province = \"$province\"";
 
-                            echo "alert('$order');";
+                            //echo "alert('$order');";
                             $result = mysql_query($order);
                             while($row = mysql_fetch_array($result)) {
                                 $lo = $row['lo'];
@@ -132,7 +132,7 @@ function unescape($str)
                     });
                 }
                 else {
-                    alert('failed'+this.getStatus());
+                    alert('无法获取位置信息 错误码:'+this.getStatus());
                 }
             });
             map.addEventListener("click", function(e){   //点击事件
