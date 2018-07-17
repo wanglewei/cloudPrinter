@@ -87,6 +87,8 @@ function unescape($str)
             map.centerAndZoom(point, 15);
             map.addControl(new BMap.GeolocationControl());
             map.addControl(new BMap.NavigationControl());
+            map.addControl(new BMap.MapTypeControl());
+            
             var geolocation = new BMap.Geolocation();
 
             geolocation.getCurrentPosition(function(r){
