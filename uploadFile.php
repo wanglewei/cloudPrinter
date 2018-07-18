@@ -1,6 +1,26 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <?php
-
+function unescape($str) {
+    $ret = '';
+    $len = strlen ( $str );
+    for($i = 0; $i < $len; $i ++) {
+        if ($str [$i] == '%' && $str [$i + 1] == 'u') {
+            $val = hexdec ( substr ( $str, $i + 2, 4 ) );
+            if ($val < 0x7f)
+                $ret .= chr ( $val );
+            else if ($val < 0x800)
+                $ret .= chr ( 0xc0 | ($val >> 6) ) . chr ( 0x80 | ($val & 0x3f) );
+            else
+                $ret .= chr ( 0xe0 | ($val >> 12) ) . chr ( 0x80 | (($val >> 6) & 0x3f) ) . chr ( 0x80 | ($val & 0x3f) );
+            $i += 5;
+        } else if ($str [$i] == '%') {
+            $ret .= urldecode ( substr ( $str, $i, 3 ) );
+            $i += 2;
+        } else
+            $ret .= $str [$i];
+    }
+    return $ret;
+}
     if ($_FILES["file"]["error"] > 0)
     {
         echo "错误：: " . $_FILES["file"]["error"] . "<br>";
@@ -24,9 +44,12 @@
             echo "<script type='text/javascript'>alert(\"不存在该店家\");</script>";
             echo "<script>window.location.href='loginView.php';</script> ";
         }
+        else{
+            echo unescape("商家详细地址:".$row["province"]." ".$row["City"]." ".$row["Area"]." ".$row["Other"]);
+        }
         mysql_query("INSERT INTO file (username, printname, filename)VALUES (\"$username\", \"$printname\",\"upload/" . "$hashname." . substr($_FILES["file"]["name"], strrpos($_FILES["file"]["name"], '.') + 1) . "\")");
         mysql_close($con);
-        echo "SUCCESS";
+        echo "<br />状态:发送成功";
     }
 
 ?>
