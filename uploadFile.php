@@ -18,7 +18,7 @@
             die('Could not connect: ' . mysql_error());
         }
         mysql_select_db("user", $con);
-        $result = mysql_query("SELECT * FROM users WHERE username= \"$printname\"");
+        $result = mysql_query("SELECT * FROM users WHERE username= \"$printname\" and type = \"2\"");
         $row = mysql_fetch_array($result);
         if ($row == null) {
             echo "<script type='text/javascript'>alert(\"不存在该店家\");</script>";
