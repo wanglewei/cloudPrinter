@@ -145,16 +145,9 @@ function unescape($str) {
                             else {
                                 echo "location.href='userView.php';";
                             }
-                            $province = unescape($province);
-                            $a = "SELECT * FROM users WHERE province = \"";
-                            $b = "\" and type = \"2\"";
-                            
-                            
-                            $a = iconv("UTF-8","ASCII",$a);
-                            $b = iconv("UTF-8","ASCII",$b);
-                            //$order = $a + $province + $b;
-                            //echo "alert(\"$a$province$b\");";
-                            $result = mysql_query("$a$province$b");
+                            $order = "SELECT * FROM users WHERE province = '$province' and type = '2'";
+                            echo "alert(\"$order\");";
+                            $result = mysql_query("$order");
 
                             while($row = mysql_fetch_array($result)) {
                                 $lo = $row['lo'];
