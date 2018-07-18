@@ -2,9 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9ab12226-e758-4977-8fc9-d112216bdba4" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/registered.php" beforeDir="false" afterPath="$PROJECT_DIR$/registered.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/upload/134ca1f4dd84d0094042e244ae1d3826fd2287cd761a947756dd4690d0384059.exe" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/upload/8d841694b8d63859e45fbe0f4f23f7c4abb1f12cc12bb6ed6adb58368d561ee4.sql" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/userView.php" beforeDir="false" afterPath="$PROJECT_DIR$/userView.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -37,8 +34,8 @@
       <file leaf-file-name="userView.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/userView.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="388">
-              <caret line="148" column="54" lean-forward="true" selection-start-line="148" selection-start-column="54" selection-end-line="148" selection-end-column="54" />
+            <state relative-caret-position="190">
+              <caret line="148" column="30" selection-start-line="148" selection-start-column="30" selection-end-line="148" selection-end-column="30" />
             </state>
           </provider>
         </entry>
@@ -133,8 +130,9 @@
       <path value="$PROJECT_DIR$/package.json" />
     </packageJsonPaths>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="676" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="339" />
+    <option name="y" value="105" />
     <option name="width" value="697" />
     <option name="height" value="735" />
   </component>
@@ -184,16 +182,15 @@
       <workItem from="1531648992883" duration="20000" />
       <workItem from="1531649722891" duration="40562000" />
       <workItem from="1531785535781" duration="9091000" />
-      <workItem from="1531892749716" duration="7045000" />
+      <workItem from="1531892749716" duration="7435000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="83305000" />
+    <option name="totallyTimeSpent" value="83695000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
+    <frame x="339" y="105" width="697" height="735" extended-state="0" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" weight="0.24963397" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -365,8 +362,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/userView.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="388">
-          <caret line="148" column="54" lean-forward="true" selection-start-line="148" selection-start-column="54" selection-end-line="148" selection-end-column="54" />
+        <state relative-caret-position="190">
+          <caret line="148" column="30" selection-start-line="148" selection-start-column="30" selection-end-line="148" selection-end-column="30" />
         </state>
       </provider>
     </entry>
