@@ -3,7 +3,23 @@
 <?php
 error_reporting(E_ALL^E_NOTICE);
 
-
+function escape($str) {
+    preg_match_all ( "/[\xc2-\xdf][\x80-\xbf]+|[\xe0-\xef][\x80-\xbf]{2}|[\xf0-\xff][\x80-\xbf]{3}|[\x01-\x7f]+/e", $str, $r );
+    //匹配utf-8字符，
+    $str = $r [0];
+    $l = count ( $str );
+    for($i = 0; $i < $l; $i ++) {
+        $value = ord ( $str [$i] [0] );
+        if ($value < 223) {
+            $str [$i] = rawurlencode ( utf8_decode ( $str [$i] ) );
+            //先将utf8编码转换为ISO-8859-1编码的单字节字符，urlencode单字节字符.
+            //utf8_decode()的作用相当于iconv("UTF-8","CP1252",$v)。
+        } else {
+            $str [$i] = "%u" . strtoupper ( bin2hex ( iconv ( "UTF-8", "UCS-2", $str [$i] ) ) );
+        }
+    }
+    return join ( "", $str );
+}
 function unescape($str) {
 	$ret = '';
 	$len = strlen ( $str );
@@ -56,14 +72,32 @@ function unescape($str) {
                 var infoWindow = new BMap.InfoWindow(text);
                 marker.addEventListener("click", function () { this.openInfoWindow(infoWindow);document.getElementById('printname').value=infoWindow.getContent(); });
             }
+            function check() {
+                console.log(1);
+                //获取账号
+                var code = document.getElementById("printname").value;
+                    var reg = /^\w{6,12}$/;
+                    if(reg.test(code)) {
+                        return true;
+                    } else {
+                        alert("商家用户名错误,必须为6-12位字母或数字或下划线");
+                        return false;
+                    }
+            }
 
         </script>
     </head>
     <body>
-        <form action="uploadFile.php" method="post" enctype="multipart/form-data">
+        <?php
+            session_start();
+            if(isset($_SESSION['user']) == false){
+                header("location:index.php");
+            }
+            ?>
+        <form action="uploadFile.php" method="post" enctype="multipart/form-data" onsubmit="return check()">
                 <label for="file">文件名：</label>
                 <input type="file" name="file" id="file"><br \>
-                <input type="text" name="username"  readonly="true"  value="<?php session_start(); echo $_SESSION['user'];?>">
+                <input type="text" name="username"  readonly="true"  value="<?php echo $_SESSION['user'];?>">
                 <input type="text" name="printname" id="printname">
                 <input type="submit" name="submit" value="提交">
         </form>

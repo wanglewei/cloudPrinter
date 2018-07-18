@@ -14,6 +14,41 @@
         }
     </style>
 
+
+    <script type="text/javascript">
+        function check_code() {
+            console.log(1);
+            //获取账号
+            var code =
+                document.getElementById("username").value;
+            var reg = /^\w{6,12}$/;
+            if(reg.test(code)) {
+                return true;
+            } else {
+                alert("用户名错误,必须为6-12位字母或数字或下划线");
+                return false;
+            }
+        }
+        function check_pwd(){
+            console.log(2);
+            var code2 =document.getElementById("password").value;
+            var reg2 = /^\w{6,16}$/;
+            if(reg2.test(code2)) {
+                return true;
+            } else {
+                alert("密码错误,必须为6-16位字母或数字或下划线");
+                return false;
+            }
+
+        }
+        function check() {
+            if(document.getElementById("la").value == ""){
+                alert("请选择位置");
+                return false;
+            }
+            return check_code() && check_pwd();
+        }
+    </script>
     <style type="text/css">
         html{height:100%}
         body{height:100%;margin:0px;padding:0px}
@@ -29,9 +64,9 @@
 
 <div style="text-align: center">
     <p>注册</p>
-    <form action="registered.php" method="get">
-        <p>username: <input type="text" name="username"></p>
-        <p>password: <input type="password" name="password"></p>
+    <form action="registered.php" method="get" onsubmit="return check()">
+        <p>username: <input type="text" name="username" id="username"></p>
+        <p>password: <input type="password" name="password" id="password"></p>
         <p>   <input type="radio" name="type" value="1" />用户
             <input type="radio" name="type" value="2" />商家
         </p>

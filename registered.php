@@ -5,6 +5,7 @@
  * Date: 2018/7/10
  * Time: 23:12
  */
+
 if(isset($_GET["username"])) {
     $con = mysql_connect("localhost", "root", "wslzd9877");
     if (!$con) {
