@@ -1,17 +1,8 @@
 <html>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <head>
-    <title>云打印网站</title>
-    <style type="text/css">
-        #top {
-            color: brown;
-            text-align: center;
-            background-color: beige;
-        }
-        body{
-            background-color:cadetblue;
-        }
-    </style>
+    <base target="_blank">
+    <link rel="stylesheet" type="text/css" href="buttons.css">
     <script type="text/javascript">
         function check_code() {
             console.log(1);
@@ -43,21 +34,21 @@
         }
     </script>
 </head>
-
-<h1 id="top">云打印网站</h1>
-<hr \>
 <body>
 <div style="text-align: center">
-    <p>登录</p>
     <form action="login.php" method="POST"onsubmit="return check()">
         <p>
-            username: <input type="text" name="username" id="username"/>
+            用户 <input type="text" name="username" id="username" class="button button-rounded button-tiny"/>
         </p>
-
+        <br />
         <p>
-            password: <input type="password" name="password" id="password"/>
-        <input type="submit" >
+            密码 <input type="password" name="password" id="password" class="button button-rounded button-tiny"/>
+            <br /><br /><br />
+            <input type="submit" value="登陆" class="button button-primary button-rounded button-small">
+            <a href="registeredView.php"><button type="button" class="button button-primary button-rounded button-small">注册</button></a>
+
     </form>
+
 </div>
 </body>
 </html>
