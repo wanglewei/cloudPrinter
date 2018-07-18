@@ -22,21 +22,21 @@ function escape($str) {
     }
     return join ( "", $str );
 }
-if(isset($_GET["username"])) {
+if(isset($_POST["username"])) {
     $con = mysql_connect("localhost", "root", "wslzd9877");
     if (!$con) {
         die('Could not connect: ' . mysql_error());
     }
     mysql_select_db("user", $con);
-    $user = $_GET["username"];
-    $pass = $_GET["password"];
-    $type = $_GET["type"];
-    $province = escape($_GET["province"]);
-    $Area = escape($_GET["Area"]);
-    $City = escape($_GET["City"]);
-    $lo = $_GET["lo"];
-    $la = $_GET["la"];
-    $Other = escape($_GET["Other"]);
+    $user = $_POST["username"];
+    $pass = $_POST["password"];
+    $type = $_POST["type"];
+    $province = escape($_POST["province"]);
+    $Area = escape($_POST["Area"]);
+    $City = escape($_POST["City"]);
+    $lo = $_POST["lo"];
+    $la = $_POST["la"];
+    $Other = escape($_POST["Other"]);
     $result = mysql_query("SELECT * FROM users WHERE username= \"$user\"");
     $row = mysql_fetch_array($result);
     if($row == null)

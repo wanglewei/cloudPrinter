@@ -12,8 +12,8 @@
         die('Could not connect: ' . mysql_error());
     }
     mysql_select_db("user", $con);
-    $user = $_GET["username"];
-    $pass = $_GET["password"];
+    $user = $_POST["username"];
+    $pass = $_POST["password"];
     $result = mysql_query("SELECT * FROM users WHERE username= \"$user\"");
     $row = mysql_fetch_array($result);
 

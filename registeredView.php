@@ -64,10 +64,10 @@
 
 <div style="text-align: center">
     <p>注册</p>
-    <form action="registered.php" method="get" onsubmit="return check()">
+    <form action="registered.php" method="POST" onsubmit="return check()">
         <p>username: <input type="text" name="username" id="username"></p>
         <p>password: <input type="password" name="password" id="password"></p>
-        <p>   <input type="radio" name="type" value="1" />用户
+        <p>   <input type="radio" name="type" value="1" checked />用户
             <input type="radio" name="type" value="2" />商家
         </p>
         <input type="text" name="province"  readonly="true" id="province" />

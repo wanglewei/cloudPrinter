@@ -49,7 +49,7 @@
 <body>
 <div style="text-align: center">
     <p>登录</p>
-    <form action="login.php" method="get"onsubmit="return check()">
+    <form action="login.php" method="POST"onsubmit="return check()">
         <p>
             username: <input type="text" name="username" id="username"/>
         </p>
