@@ -13,11 +13,11 @@
         $username = $_POST["username"];
         $printname = $_POST["printname"];
 
-        $con = mysql_connect("localhost", "yundayin", "CdAtaF4j57mfw8rT");
+        $con = mysql_connect("localhost", "root", "wslzd9877");
         if (!$con) {
             die('Could not connect: ' . mysql_error());
         }
-        mysql_select_db("yundayin", $con);
+        mysql_select_db("user", $con);
         $result = mysql_query("SELECT * FROM users WHERE username= \"$printname\" and type = \"2\"");
         $row = mysql_fetch_array($result);
         if ($row == null) {

@@ -103,13 +103,13 @@ function unescape($str) {
         </form>
         <div id="container"></div>
         <?php
-        $con = mysql_connect("localhost","yundayin","CdAtaF4j57mfw8rT");
+        $con = mysql_connect("localhost","root","wslzd9877");
         if (!$con)
         {
             die('Could not connect: ' . mysql_error());
         }
 
-        mysql_select_db("yundayin", $con);
+        mysql_select_db("user", $con);
         ?>
         <script type="text/javascript" charset="UTF-8">
             var map = new BMap.Map("container");
