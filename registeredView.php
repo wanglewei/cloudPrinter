@@ -1,16 +1,50 @@
 <!DOCTYPE html>
 <html>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
 <head>
-    <title>云打印网站</title>
+    <link rel="stylesheet" type="text/css" href="css/buttons.css">
+    <title>云打印|cloudPrinter</title>
     <style type="text/css">
-        #top {
-            color: brown;
+        #top
+        {
+            font-family: "Microsoft YaHei UI";
+            color: white;
             text-align: center;
-            background-color: beige;
         }
         body{
-            background-color:cadetblue;
+            background-image: url("image/resback.png");
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+            height:100%;margin:0px;padding:0px;
+        }
+        .btn {
+            background:rgba(255, 251, 240, 0);
+            border-style :none;
+            color: white;
+            text-align: center;
+        }
+        html{height:100%}
+        #container{
+            height:50%;
+            top: 0;
+            left: 0;
+            margin: auto;
+        }
+        .mid{
+            text-align: center;
+            color: #DDDDDD;
+            border-radius: 20px;
+            width: 80%;
+            height: 100%;
+            margin: auto;
+            background:rgba(255, 251, 240, 0.3);
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
         }
     </style>
 
@@ -49,39 +83,32 @@
             return check_code() && check_pwd();
         }
     </script>
-    <style type="text/css">
-        html{height:100%}
-        body{height:100%;margin:0px;padding:0px}
-        #container{
-            height:50%;
-        }
-    </style>
     <script type="text/javascript" src="http://api.map.baidu.com/api?v=3.0&ak=04uLKfHLu2zT9eKoaSk2WsXC0ekF3aF3" charset="UTF-8"></script>
 </head>
 
-<h1 id="top">云打印网站</h1>
-<hr \>
+<h1 id="top" >.cloudPrinter SDUT</h1>
 
-<div style="text-align: center">
-    <p>注册</p>
+<div class="mid">
+    <br />
     <form action="registered.php" method="POST" onsubmit="return check()">
-        <p>username: <input type="text" name="username" id="username"></p>
-        <p>password: <input type="password" name="password" id="password"></p>
-        <p>   <input type="radio" name="type" value="1" checked />用户
-            <input type="radio" name="type" value="2" />商家
+        <p>注册用户: <input type="text" name="username" id="username" class="button button-rounded button-tiny"></p>
+        <p>注册密码: <input type="password" name="password" id="password" class="button button-rounded button-tiny"></p>
+        <p>详细地址: <input type="text" name="Other" class="button button-rounded button-tiny"/></p>
+        <p>   <input type="radio" name="type" value="1" checked class="button button-circle button-tiny"/>用户
+            <input type="radio" name="type" value="2" class="button button-circle button-tiny"/>商家
         </p>
-        <input type="text" name="province"  readonly="true" id="province" />
-        <input type="text" name="City"  readonly="true" id="City"/>
-        <input type="text" name="Area"  readonly="true" id="Area"/>
-        <input type="text" name="lo"  readonly="true" id="lo"/>
-        <input type="text" name="la"  readonly="true" id="la"/>
-        <p>详细地址: <input type="text" name="Other" /></p>
 
-        <input type="submit">
+        <input type="submit" class="button button-primary button-rounded button-small">
+        <br />
+        <p style="color: white">选择您（商家/用户）的位置</p>
+        <input type="text" name="province"  readonly="true" id="province" class="btn"/>
+        <input type="text" name="City"  readonly="true" id="City" class="btn"/>
+        <input type="text" name="Area"  readonly="true" id="Area" class="btn"/>
+        <input type="text" name="lo"  readonly="true" id="lo" class="btn"/>
+        <input type="text" name="la"  readonly="true" id="la" class="btn"/>
     </form>
-    <p>选择您（商家/用户）的的位置</p>
-</div>
-<div id="container"></div>
+    <div id="container" style="width: 62%"></div>
+
     <script type="text/javascript">
         var map = new BMap.Map("container");
         var point = new BMap.Point(116.404, 39.915);
@@ -129,6 +156,8 @@
         })
 
     </script>
+</div>
+
 
 
 </body>

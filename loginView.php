@@ -2,7 +2,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <head>
     <base target="_blank">
-    <link rel="stylesheet" type="text/css" href="buttons.css">
+    <link rel="stylesheet" type="text/css" href="css/buttons.css">
     <script type="text/javascript">
         function check_code() {
             console.log(1);

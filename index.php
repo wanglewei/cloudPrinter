@@ -1,7 +1,7 @@
 <html>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <head>
-        <title>云打印网站</title>
+        <title>云打印|cloudPrinter</title>
         <style type="text/css">
             #top
             {
@@ -15,15 +15,13 @@
                 align-content: center;
                 align-items: center;
                 text-align: center;
-                background-image: url("back.jpeg");
+                background-image: url("image/back.jpeg");
                 -webkit-background-size: cover;
                 -moz-background-size: cover;
                 -o-background-size: cover;
-                background-size: cover;//这条一定要
+                background-size: cover;
             }
             #logincube{
-                height: 62%;
-                width: 38%;
                 text-align: center; /*让div内部文字居中*/
                 background-color: #fff;
                 border-radius: 20px;
