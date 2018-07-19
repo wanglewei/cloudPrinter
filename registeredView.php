@@ -32,6 +32,7 @@
             top: 0;
             left: 0;
             margin: auto;
+            border-radius: 30px;
         }
         .mid{
             text-align: center;

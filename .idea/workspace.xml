@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9ab12226-e758-4977-8fc9-d112216bdba4" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/back.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/buttons.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/loginView.php" beforeDir="false" afterPath="$PROJECT_DIR$/loginView.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/registeredView.php" beforeDir="false" afterPath="$PROJECT_DIR$/registeredView.php" afterDir="false" />
-    </list>
+    <list default="true" id="9ab12226-e758-4977-8fc9-d112216bdba4" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -206,12 +200,12 @@
       <workItem from="1531909139084" duration="65000" />
       <workItem from="1531909513913" duration="7568000" />
       <workItem from="1531931010182" duration="9000" />
-      <workItem from="1531962833540" duration="4853000" />
+      <workItem from="1531962833540" duration="5450000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="98173000" />
+    <option name="totallyTimeSpent" value="98770000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
