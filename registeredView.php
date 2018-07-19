@@ -87,7 +87,7 @@
     <script type="text/javascript" src="http://api.map.baidu.com/api?v=3.0&ak=04uLKfHLu2zT9eKoaSk2WsXC0ekF3aF3" charset="UTF-8"></script>
 </head>
 
-<h1 id="top" >.cloudPrinter SDUT</h1>
+<h1 id="top" >.cloudPrinter</h1>
 
 <div class="mid">
     <br />

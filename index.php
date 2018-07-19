@@ -37,7 +37,7 @@
         </style>
     </head>
     <body>
-        <h1 id="top" >.cloudPrinter SDUT</h1>
+        <h1 id="top" >.cloudPrinter</h1>
 
 
             <div id="logincube">
