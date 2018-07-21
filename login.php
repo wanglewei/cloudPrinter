@@ -23,6 +23,7 @@
         session_start();
         $_SESSION['user'] = $user;
         $_SESSION['pass'] = $pass;
+        $_SESSION['type'] = $row['type'];
         if($type != '2') {
             header("location:userView.php");
         }

@@ -139,7 +139,7 @@ function unescape($str) {
                             $_cookie("province",addComp.province);
                             <?php
                             if(isset($_COOKIE["province"])) {
-                                session_destroy();
+                                //session_destroy();
                                 $province = $_COOKIE["province"];
                             }
                             else {

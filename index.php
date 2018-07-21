@@ -35,10 +35,17 @@
                 bottom: 0;
             }
         </style>
+        <?php
+        session_start();
+        if(isset($_SESSION['user'])){
+            $_POST['user'] = $_SESSION['user'];
+            $_POST['pass'] = $_SESSION['pass'];
+            echo "<script>location.href='login.php';</script>";
+        }
+        ?>
     </head>
     <body>
         <h1 id="top" >.cloudPrinter</h1>
-
 
             <div id="logincube">
                 <br /><br /><br /><br />

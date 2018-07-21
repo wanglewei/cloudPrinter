@@ -14,7 +14,6 @@ if (!$con)
 mysql_select_db("user", $con);
 $user = $_SESSION["user"];
 $pass = $_SESSION["pass"];
-session_destroy();
 $result = mysql_query("SELECT * FROM file WHERE printname= \"$user\"");
 while($row = mysql_fetch_array($result)) {
     ?>
