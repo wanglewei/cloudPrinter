@@ -86,7 +86,7 @@
     </script>
     <script type="text/javascript" src="http://api.map.baidu.com/api?v=3.0&ak=04uLKfHLu2zT9eKoaSk2WsXC0ekF3aF3" charset="UTF-8"></script>
 </head>
-
+<body>
 <h1 id="top" >.cloudPrinter</h1>
 
 <div class="mid">

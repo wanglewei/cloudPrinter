@@ -36,7 +36,7 @@
 </head>
 <body>
 <div style="text-align: center">
-    <form action="login.php" method="POST"onsubmit="return check()">
+    <form action="login.php" method="POST"onsubmit="return check()" target="_parent">
         <p>
             用户 <input type="text" name="username" id="username" class="button button-rounded button-tiny"/>
         </p>
