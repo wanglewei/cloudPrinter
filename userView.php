@@ -41,7 +41,6 @@ function unescape($str) {
 	}
 	return $ret;
 }
-
 ?>
 <!DOCTYPE html>
 <html>
@@ -113,9 +112,16 @@ function unescape($str) {
         ?>
         <script type="text/javascript" charset="UTF-8">
             var map = new BMap.Map("container");
-            var point = new BMap.Point(116.404, 39.915);
+            var point = new BMap.Point(116.38,39.90);
             var x,y;
-            map.centerAndZoom(point, 10);
+            <?php
+            if(isset($_COOKIE['province'])) {
+                $html2 = file_get_contents("http://api.map.baidu.com/geocoder/v2/?output=json&ak=04uLKfHLu2zT9eKoaSk2WsXC0ekF3aF3&" . "address=" . unescape($_COOKIE['province']).";");
+                echo "var tpoint=" . $html2.";";
+                echo "point = new BMap.Point(tpoint.result.location.lng,tpoint.result.location.lat);";
+            }
+            ?>
+            map.centerAndZoom(point,8);
             map.addControl(new BMap.GeolocationControl());
             map.addControl(new BMap.NavigationControl());
             map.addControl(new BMap.MapTypeControl());
@@ -163,7 +169,38 @@ function unescape($str) {
                     });
                 }
                 else {
-                    alert('无法获取位置信息 错误码:'+this.getStatus());
+                    var pt = null;
+                    var i = 0;
+                    var mark;
+
+<?php
+                    echo "alert('fail');";
+                        $html = file_get_contents("http://pv.sohu.com/cityjson?ie=utf-8");
+                        echo $html;
+?>
+                    $_cookie("province",returnCitySN.cname);
+<?php
+                        if(isset($_COOKIE["province"])) {
+                            //session_destroy();
+                            $province = $_COOKIE["province"];
+                        }
+                        else {
+                            echo "location.href='userView.php';";
+                        }
+                        $order = "SELECT * FROM users WHERE province = '$province' and type = '2'";
+                        //echo "alert(\"$order\");";
+                        $result = mysql_query("$order");
+
+                        while($row = mysql_fetch_array($result)) {
+                            $lo = $row['lo'];
+                            $la = $row['la'];
+                            $printname = $row['username'];
+                            echo "pt = new BMap.Point($lo,$la);";
+                            echo "mark=new BMap.Marker(pt);";
+                            echo "map.addOverlay(mark);";
+                            echo "createTag(mark,\"$printname\");";
+                        }
+?>
                 }
             });
 
