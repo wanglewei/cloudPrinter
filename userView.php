@@ -174,7 +174,6 @@ function unescape($str) {
                     var mark;
 
 <?php
-                    echo "alert('fail');";
                         $html = file_get_contents("http://pv.sohu.com/cityjson?ie=utf-8");
                         echo $html;
 ?>
