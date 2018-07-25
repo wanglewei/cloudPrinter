@@ -2,7 +2,6 @@
 
 <?php
 error_reporting(E_ALL^E_NOTICE);
-
 function escape($str) {
     preg_match_all ( "/[\xc2-\xdf][\x80-\xbf]+|[\xe0-\xef][\x80-\xbf]{2}|[\xf0-\xff][\x80-\xbf]{3}|[\x01-\x7f]+/e", $str, $r );
     //匹配utf-8字符，
@@ -115,11 +114,12 @@ function unescape($str) {
             var point = new BMap.Point(116.38,39.90);
             var x,y;
             <?php
-            if(isset($_COOKIE['province'])) {
-                $html2 = file_get_contents("http://api.map.baidu.com/geocoder/v2/?output=json&ak=04uLKfHLu2zT9eKoaSk2WsXC0ekF3aF3&" . "address=" . unescape($_COOKIE['province']).";");
+            if(isset($_COOKIE['provinceip'])) {
+                $html2 = file_get_contents("http://api.map.baidu.com/geocoder/v2/?output=json&ak=04uLKfHLu2zT9eKoaSk2WsXC0ekF3aF3&" . "address=" . unescape($_COOKIE['provinceip']).";");
                 echo "var tpoint=" . $html2.";";
                 echo "point = new BMap.Point(tpoint.result.location.lng,tpoint.result.location.lat);";
             }
+
             ?>
             map.centerAndZoom(point,8);
             map.addControl(new BMap.GeolocationControl());
@@ -135,8 +135,7 @@ function unescape($str) {
                     var myGeo = new BMap.Geocoder();
                     //map.addOverlay(mk);
                     map.panTo(r.point);
-                    center = map.getCenter()
-                    myGeo.getLocation(new BMap.Point(center.lng ,center.lat ), function(result){
+                    myGeo.getLocation(new BMap.Point(r.point.lng ,r.point.lat ), function(result){
                         if (result){
                             var addComp = result.addressComponents;
                             var pt = null;
@@ -147,10 +146,44 @@ function unescape($str) {
                             if(isset($_COOKIE["province"])) {
                                 //session_destroy();
                                 $province = $_COOKIE["province"];
+                                $order = "SELECT * FROM users WHERE province = '$province' and type = '2'";
+                                //echo "alert(\"".unescape($province)."\");";
+                                $result = mysql_query("$order");
+
+                                while($row = mysql_fetch_array($result)) {
+                                    $lo = $row['lo'];
+                                    $la = $row['la'];
+                                    $printname = $row['username'];
+                                    echo "pt = new BMap.Point($lo,$la);";
+                                    echo "mark=new BMap.Marker(pt);";
+                                    echo "map.addOverlay(mark);";
+                                    echo "createTag(mark,\"$printname\");";
+                                }
                             }
                             else {
                                 echo "location.href='userView.php';";
                             }
+                            ?>
+                        }
+                    });
+                }
+                else {
+                    var pt = null;
+                    var i = 0;
+                    var mark;
+
+<?php
+                            $html = file_get_contents("http://pv.sohu.com/cityjson?ie=utf-8");
+                            echo $html;
+
+?>
+                    $_cookie("provinceip",returnCitySN.cname);
+<?php
+
+
+                        if(isset($_COOKIE["provinceip"])) {
+                                //session_destroy();
+                            $province = $_COOKIE["provinceip"];
                             $order = "SELECT * FROM users WHERE province = '$province' and type = '2'";
                             //echo "alert(\"$order\");";
                             $result = mysql_query("$order");
@@ -164,41 +197,11 @@ function unescape($str) {
                                 echo "map.addOverlay(mark);";
                                 echo "createTag(mark,\"$printname\");";
                             }
-                            ?>
-                        }
-                    });
-                }
-                else {
-                    var pt = null;
-                    var i = 0;
-                    var mark;
-
-<?php
-                        $html = file_get_contents("http://pv.sohu.com/cityjson?ie=utf-8");
-                        echo $html;
-?>
-                    $_cookie("province",returnCitySN.cname);
-<?php
-                        if(isset($_COOKIE["province"])) {
-                            //session_destroy();
-                            $province = $_COOKIE["province"];
                         }
                         else {
                             echo "location.href='userView.php';";
                         }
-                        $order = "SELECT * FROM users WHERE province = '$province' and type = '2'";
-                        //echo "alert(\"$order\");";
-                        $result = mysql_query("$order");
 
-                        while($row = mysql_fetch_array($result)) {
-                            $lo = $row['lo'];
-                            $la = $row['la'];
-                            $printname = $row['username'];
-                            echo "pt = new BMap.Point($lo,$la);";
-                            echo "mark=new BMap.Marker(pt);";
-                            echo "map.addOverlay(mark);";
-                            echo "createTag(mark,\"$printname\");";
-                        }
 ?>
                 }
             });
